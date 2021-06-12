@@ -1,0 +1,20 @@
+{
+  "name": "ts-catch",
+  "version": "1.0.0",
+  "description": "A typescript linter that helps increase performance and possibly catch things that could lead to runtime errors",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Valentine Oragbakosi",
+  "license": "ISC",
+  "dependencies": {
+    "typescript-parser": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2"
+  }
+}
