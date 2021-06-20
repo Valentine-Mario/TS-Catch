@@ -1,6 +1,6 @@
 import { read_dir, read_file } from "./lib/file_lib";
 import { Project, Statement, ts } from "ts-morph";
-import { useLetInFuncScope } from "./lints";
+import { useLetInFuncScope, useBooleanInFuncType } from "./lints";
 const project = new Project({ useInMemoryFileSystem: true });
 
 import * as fs from "fs";
@@ -13,6 +13,7 @@ function lints(
   file_content: string
 ) {
   useLetInFuncScope(sourceFile, file, file_content);
+  useBooleanInFuncType(sourceFile, file, file_content);
 }
 
 async function run() {

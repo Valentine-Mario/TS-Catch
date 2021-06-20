@@ -1,4 +1,4 @@
-function boy(params: number) {
+function stuff(params: number) {
   //should lint because of the var key word
   var a = params + 1;
   //should be ignored
