@@ -1,35 +1,33 @@
-import { Project, FunctionDeclaration, VariableStatement } from "ts-morph";
-import { read_dir, read_file } from "../lib/file_lib";
+import {
+  FunctionDeclaration,
+  VariableStatement,
+  Statement,
+  ts,
+} from "ts-morph";
+import { span_and_lint } from "../lib/span_lint";
 
-const project = new Project({ useInMemoryFileSystem: true });
-const fs = project.getFileSystem();
-
-export const useLetInFuncScope = () => {
-  read_dir("test")
-    .then(async (data) => {
-      for (let a of data as string[]) {
-        let file_content = (await read_file(a)) as string;
-        const sourceFile = project
-          .createSourceFile(a, file_content)
-          .getStatements();
-        for (let b of sourceFile) {
-          if (b instanceof FunctionDeclaration) {
-            const c = b.getStatements();
-            for (let d of c) {
-              if (d instanceof VariableStatement) {
-                let structure = d.getStructure();
-                if (structure.declarationKind === "var") {
-                  console.log(
-                    "consider using let instead of var in function scope"
-                  );
-                }
-              }
-            }
+export const useLetInFuncScope = (
+  sourceFile: Statement<ts.Statement>[],
+  file: string,
+  content: string
+) => {
+  for (let b of sourceFile) {
+    if (b instanceof FunctionDeclaration) {
+      const c = b.getStatements();
+      for (let d of c) {
+        if (d instanceof VariableStatement) {
+          let structure = d.getStructure();
+          if (structure.declarationKind === "var") {
+            span_and_lint(
+              d.getStart(),
+              d.getEnd(),
+              content,
+              "Consider using `let` for variable decleration in function scope rather than 'var'",
+              file
+            );
           }
         }
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  }
 };

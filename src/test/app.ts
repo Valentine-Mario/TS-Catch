@@ -5,7 +5,7 @@ let b: string = "boy";
 
 a + b;
 
-function boy(params: number) {
+function boy2(params: number) {
   var a = params + 1;
   var b = 3 + 8;
   return a;
