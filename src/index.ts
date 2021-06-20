@@ -1,6 +1,6 @@
-import { useLetInFuncScope } from "./lints/use_let_in_func_scope";
 import { read_dir, read_file } from "./lib/file_lib";
 import { Project, Statement, ts } from "ts-morph";
+import { useLetInFuncScope } from "./lints";
 const project = new Project({ useInMemoryFileSystem: true });
 
 import * as fs from "fs";

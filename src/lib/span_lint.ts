@@ -1,3 +1,5 @@
+import * as fs from "fs";
+
 export const span_and_lint = (
   start: number,
   end: number,
@@ -6,8 +8,11 @@ export const span_and_lint = (
   file: string
 ) => {
   let span = file_content.substring(start, end);
-  console.info(`${addtional_into} :\n
-   ${span}\n
-   ${"^".repeat(end - start)}
-File: ${file}\n`);
+  let filename = file.replace(/^.*[\\\/]/, "");
+  let output = `${addtional_into} :\n
+  ${span}\n
+  ${"^".repeat(end - start)}
+File: ${file}\n`;
+  console.info(output);
+  fs.writeFileSync(`src/stderr/${filename}.stderr`, output);
 };
