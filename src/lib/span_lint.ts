@@ -7,12 +7,20 @@ export const span_and_lint = (
   addtional_into: string,
   file: string
 ) => {
-  let span = file_content.substring(start, end);
-  let filename = file.replace(/^.*[\\\/]/, "");
-  let output = `${addtional_into} :\n
-  ${span}\n
-  ${"^".repeat(end - start)}
-File: ${file}\n`;
-  console.info(output);
-  fs.writeFileSync(`src/stderr/${filename}.stderr`, output);
+  if (process.env.TESTNAME !== undefined) {
+    let span = file_content.substring(start, end);
+    let filename = file.replace(/^.*[\\\/]/, "");
+    let output = `${addtional_into} :\n
+    ${span}\n
+    ${"^".repeat(end - start)}
+  File: ${file}\n`;
+    fs.writeFileSync(`src/stderr/${filename}.stderr`, output);
+  } else {
+    let span = file_content.substring(start, end);
+    let output = `${addtional_into} :\n
+    ${span}\n
+    ${"^".repeat(end - start)}
+  File: ${file}\n`;
+    console.info(output);
+  }
 };
