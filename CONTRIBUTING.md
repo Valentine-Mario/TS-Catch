@@ -47,7 +47,7 @@ for(let b of sourceFile){
               b.getStart(),
               b.getEnd(),
               content,
-              `Consider using a more declerative name in function parameter`,
+              `Consider using a more declerative name for function`,
               file
             );
     }
