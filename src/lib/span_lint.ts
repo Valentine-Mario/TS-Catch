@@ -14,6 +14,7 @@ export const span_and_lint = (
     ${span}\n
     ${"^".repeat(end - start)}
   File: ${file}\n`;
+    console.log(output);
     fs.writeFileSync(`src/stderr/${filename}.stderr`, output);
   } else {
     let span = file_content.substring(start, end);
