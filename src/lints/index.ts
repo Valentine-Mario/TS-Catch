@@ -1,4 +1,7 @@
-import { useLetInFuncScope } from "./use_let_in_func_scope";
+import {
+  useLetInFuncScope,
+  useLetInMethodScope,
+} from "./use_let_in_func_scope";
 import { useBooleanInFuncType } from "./use_boolean_in_func_type";
 
-export { useLetInFuncScope, useBooleanInFuncType };
+export { useLetInFuncScope, useBooleanInFuncType, useLetInMethodScope };

@@ -4,3 +4,4 @@ Consider using 'boolean' primitive type rather than 'Boolean' in function 'evalu
 
     ^^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
+

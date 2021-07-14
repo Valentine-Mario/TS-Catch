@@ -5,3 +5,17 @@ function stuff(params: number) {
   let b = 3 + 8;
   return a;
 }
+
+class Test {
+  value: string;
+  constructor(x: string) {
+    this.value = x;
+  }
+  test1(a: string) {
+    var b = a + "hello";
+  }
+  test2(b: string) {
+    let c = b + "hi";
+    return c;
+  }
+}

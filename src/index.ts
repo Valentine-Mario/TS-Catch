@@ -1,6 +1,10 @@
-import { read_dir, read_file } from "./lib/file_lib";
+import { read_dir, read_file, read_stderr } from "./lib/file_lib";
 import { Project, Statement, ts } from "ts-morph";
-import { useLetInFuncScope, useBooleanInFuncType } from "./lints";
+import {
+  useLetInFuncScope,
+  useBooleanInFuncType,
+  useLetInMethodScope,
+} from "./lints";
 const project = new Project({ useInMemoryFileSystem: true });
 
 import * as fs from "fs";
@@ -14,6 +18,7 @@ function lints(
 ) {
   useLetInFuncScope(sourceFile, file, file_content);
   useBooleanInFuncType(sourceFile, file, file_content);
+  useLetInMethodScope(sourceFile, file, file_content);
 }
 
 async function run() {
@@ -24,6 +29,10 @@ async function run() {
   ) {
     try {
       let dir_list = (await read_dir(file_path)) as string[];
+      //clean up stderr files
+      if (process.env.TESTNAME !== undefined) {
+        clean_all();
+      }
       for (let a of dir_list as string[]) {
         let file_content = (await read_file(a)) as string;
         const sourceFile = project
@@ -37,6 +46,10 @@ async function run() {
   } else if (file_path !== undefined && fs.existsSync(file_path)) {
     try {
       let file_content = (await read_file(file_path)) as string;
+      //clean file
+      if (process.env.TESTNAME !== undefined) {
+        clean_file(file_path);
+      }
       const sourceFile = project
         .createSourceFile(file_path, file_content)
         .getStatements();
@@ -47,6 +60,18 @@ async function run() {
   } else {
     console.log("invalid file path");
   }
+}
+
+async function clean_all() {
+  let dir_list = (await read_stderr("src")) as string[];
+  for (let file of dir_list) {
+    fs.writeFileSync(file, "");
+  }
+}
+
+async function clean_file(path: string) {
+  let filename = path.replace(/^.*[\\\/]/, "");
+  fs.writeFileSync("src/stderr/" + filename + ".stderr", "");
 }
 
 run();

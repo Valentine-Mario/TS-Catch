@@ -3,6 +3,8 @@ import {
   VariableStatement,
   Statement,
   ts,
+  ClassDeclaration,
+  MethodDeclaration,
 } from "ts-morph";
 import { span_and_lint } from "../lib/span_lint";
 
@@ -25,6 +27,37 @@ export const useLetInFuncScope = (
               "Consider using `let` for variable decleration in function scope rather than 'var'",
               file
             );
+          }
+        }
+      }
+    }
+  }
+};
+
+export const useLetInMethodScope = (
+  sourceFile: Statement<ts.Statement>[],
+  file: string,
+  content: string
+) => {
+  for (let b of sourceFile) {
+    if (b instanceof ClassDeclaration) {
+      let method_list = b.getMethods();
+      for (let method of method_list) {
+        if (method instanceof MethodDeclaration) {
+          let statement = method.getStatements();
+          for (let item of statement) {
+            if (item instanceof VariableStatement) {
+              let structure = item.getStructure();
+              if (structure.declarationKind === "var") {
+                span_and_lint(
+                  item.getStart(),
+                  item.getEnd(),
+                  content,
+                  "Consider using `let` for variable decleration in method scope rather than 'var'",
+                  file
+                );
+              }
+            }
           }
         }
       }
