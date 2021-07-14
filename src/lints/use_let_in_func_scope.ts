@@ -7,11 +7,9 @@ import {
   ClassDeclaration,
   MethodDeclaration,
   Project,
-  SourceFileCreateOptions,
   ExpressionStatement,
   ArrowFunction,
   CallExpression,
-  ParenthesizedExpression,
 } from "ts-morph";
 import { span_and_lint } from "../lib/span_lint";
 const project = new Project({ useInMemoryFileSystem: true });
@@ -104,13 +102,17 @@ export const useLetInIIFScope = (
   content: string
 ) => {
   for (let expr of sourceFile) {
+    //get expression kind
     if (expr instanceof ExpressionStatement) {
       let item = expr.getChildren();
       for (let method of item) {
+        //get instances of call expression
         if (method instanceof CallExpression) {
+          //get all the children statemnent of the expression
           let children = method.getExpression().getDescendantStatements();
           for (let child of children) {
             if (child instanceof VariableStatement) {
+              //get structure and find instances of var keyword
               let structure = child.getStructure();
               if (structure.declarationKind === "var") {
                 span_and_lint(
