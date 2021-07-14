@@ -5,10 +5,24 @@ Consider using `let` for variable decleration in function scope rather than 'var
     ^^^^^^^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
-Consider using `let` for variable decleration in method scope rather than 'var' :
+Consider using `let` for variable decleration in method scope rather than 'var' in class Test :
 
     var b = a + "hello";
 
     ^^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var a = 12;
+
+    ^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var k = 45;
+
+    ^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 

@@ -11,17 +11,24 @@ export const useBooleanInFuncType = (
   file: string,
   content: string
 ) => {
-  for (let b of sourceFile) {
-    if (b instanceof FunctionDeclaration) {
-      let parameters: ParameterDeclaration[] = b.getParameters();
-      for (let c of parameters) {
-        if (c instanceof ParameterDeclaration) {
-          if (c.getStructure().type === "Boolean") {
+  for (let functionItem of sourceFile) {
+    //get instances of function item
+    if (functionItem instanceof FunctionDeclaration) {
+      let parameters: ParameterDeclaration[] = functionItem.getParameters();
+      //get all parameters in function
+      for (let params of parameters) {
+        if (params instanceof ParameterDeclaration) {
+          //if parameter type is Boolean, Number or String
+          if (
+            params.getStructure().type === "Boolean" ||
+            params.getStructure().type === "Number" ||
+            params.getStructure().type === "String"
+          ) {
             span_and_lint(
-              c.getStart(),
-              c.getEnd(),
+              params.getStart(),
+              params.getEnd(),
               content,
-              `Consider using 'boolean' primitive type rather than 'Boolean' in function '${b.getName()}' parameter`,
+              `Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '${functionItem.getName()}' parameter`,
               file
             );
           }

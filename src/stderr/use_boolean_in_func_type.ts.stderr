@@ -1,7 +1,21 @@
-Consider using 'boolean' primitive type rather than 'Boolean' in function 'evaluate' parameter :
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate' parameter :
 
     params: Boolean
 
     ^^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate3' parameter :
+
+    params: Number
+
+    ^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate5' parameter :
+
+    params: String
+
+    ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 

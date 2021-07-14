@@ -19,3 +19,17 @@ class Test {
     return c;
   }
 }
+
+const hi = () => {
+  var a = 12;
+  let b = 34;
+  return a + b;
+};
+const a = 12;
+
+(function () {
+  123;
+  let b = 23;
+  var k = 45;
+  return b + k;
+})();
