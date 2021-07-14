@@ -30,7 +30,7 @@ export const useLetInFuncScope = (
         if (item instanceof VariableStatement) {
           let structure = item.getStructure();
           //get variable statements that use var keyword
-          if (structure.declarationKind === "var") {
+          if (structure?.declarationKind === "var") {
             span_and_lint(
               item.getStart(),
               item.getEnd(),
@@ -73,16 +73,14 @@ export const useLetInAnonymousFunc = (
                   if (child_statement instanceof VariableStatement) {
                     let structure = child_statement.getStructure();
                     //get variable statements that use var keyword
-                    if (structure.declarationKind === "var") {
-                      if (structure.declarationKind === "var") {
-                        span_and_lint(
-                          child_statement.getStart(),
-                          child_statement.getEnd(),
-                          item.initializer as string,
-                          "Consider using `let` for variable decleration in function scope rather than 'var'",
-                          file
-                        );
-                      }
+                    if (structure?.declarationKind === "var") {
+                      span_and_lint(
+                        child_statement.getStart(),
+                        child_statement.getEnd(),
+                        item.initializer as string,
+                        "Consider using `let` for variable decleration in function scope rather than 'var'",
+                        file
+                      );
                     }
                   }
                 }
@@ -114,7 +112,7 @@ export const useLetInIIFScope = (
             if (child instanceof VariableStatement) {
               //get structure and find instances of var keyword
               let structure = child.getStructure();
-              if (structure.declarationKind === "var") {
+              if (structure?.declarationKind === "var") {
                 span_and_lint(
                   child.getStart(),
                   child.getEnd(),
@@ -151,7 +149,7 @@ export const useLetInMethodScope = (
             if (item instanceof VariableStatement) {
               let structure = item.getStructure();
               //get variable statements that use var keyword
-              if (structure.declarationKind === "var") {
+              if (structure?.declarationKind === "var") {
                 span_and_lint(
                   item.getStart(),
                   item.getEnd(),
