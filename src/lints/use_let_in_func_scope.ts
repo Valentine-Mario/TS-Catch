@@ -1,4 +1,3 @@
-import { type } from "os";
 import {
   FunctionDeclaration,
   VariableStatement,
@@ -45,8 +44,8 @@ export const useLetInFuncScope = (
   }
 };
 
-//lint var keyword in anonymous func
-export const useLetInAnonymousFunc = (
+//lint var keyword in arrow func
+export const useLetInArrowFunc = (
   sourceFile: Statement<ts.Statement>[],
   file: string,
   _content: string
@@ -83,6 +82,47 @@ export const useLetInAnonymousFunc = (
                       );
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+export const useLetInAnonymousFunc = (
+  sourceFile: Statement<ts.Statement>[],
+  file: string,
+  content: string
+) => {
+  //get instances of vraible
+  for (let varItem of sourceFile) {
+    if (varItem instanceof VariableStatement) {
+      let decleration = varItem.getStructure().declarations;
+      //get variable text and parse it
+      for (let item of decleration) {
+        const newsourceFile = project
+          .createSourceFile(file, item.initializer, { overwrite: true })
+          .getStatements();
+        //transverse express statements
+        for (let functionItem of newsourceFile) {
+          if (functionItem instanceof FunctionDeclaration) {
+            //get statements in function decleration
+            const statement = functionItem.getStatements();
+            for (let variable of statement) {
+              //get instances of variable in function scope
+              if (variable instanceof VariableStatement) {
+                let structure = variable.getStructure();
+                //get variable statements that use var keyword
+                if (structure?.declarationKind === "var") {
+                  span_and_lint(
+                    variable.getStart(),
+                    variable.getEnd(),
+                    item.initializer as string,
+                    "Consider using `let` for variable decleration in function scope rather than 'var'",
+                    file
+                  );
                 }
               }
             }

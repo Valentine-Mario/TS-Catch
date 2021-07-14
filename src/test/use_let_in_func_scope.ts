@@ -25,6 +25,12 @@ const hi = () => {
   let b = 34;
   return a + b;
 };
+
+const hey = function () {
+  var a = 12;
+  let b = 34;
+  return a + b;
+};
 const a = 12;
 
 (function () {
