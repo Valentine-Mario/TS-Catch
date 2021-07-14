@@ -7,6 +7,7 @@ import {
   useLetInArrowFunc,
   useLetInIIFScope,
   useLetInAnonymousFunc,
+  useLetInFactoryMethods,
 } from "./lints";
 const project = new Project({ useInMemoryFileSystem: true });
 
@@ -25,6 +26,7 @@ function lints(
   useLetInArrowFunc(sourceFile, file, file_content);
   useLetInIIFScope(sourceFile, file, file_content);
   useLetInAnonymousFunc(sourceFile, file, file_content);
+  useLetInFactoryMethods(sourceFile, file, file_content);
 }
 
 async function run() {

@@ -33,3 +33,24 @@ Consider using `let` for variable decleration in function scope rather than 'var
     ^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var bobo = "bobo";
+
+    ^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var stuff = "a";
+
+    ^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var a_b = "234";
+
+    ^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+

@@ -9,6 +9,8 @@ import {
   ExpressionStatement,
   ArrowFunction,
   CallExpression,
+  Block,
+  LabeledStatement,
 } from "ts-morph";
 import { span_and_lint } from "../lib/span_lint";
 const project = new Project({ useInMemoryFileSystem: true });
@@ -91,6 +93,65 @@ export const useLetInArrowFunc = (
     }
   }
 };
+
+//lint for factory mathos
+export const useLetInFactoryMethods = (
+  sourceFile: Statement<ts.Statement>[],
+  file: string,
+  content: string
+) => {
+  for (let varItem of sourceFile) {
+    if (varItem instanceof VariableStatement) {
+      let decleration = varItem.getStructure().declarations;
+      for (let item of decleration) {
+        const newsourceFile = project
+          .createSourceFile(file, item.initializer, { overwrite: true })
+          .getStatements();
+        for (let node of newsourceFile) {
+          if (node instanceof Block) {
+            let block_item = node.getDescendantStatements();
+            for (let block of block_item) {
+              if (block instanceof Block) {
+                let block_list = block.getDescendantStatements();
+                for (let varItem of block_list) {
+                  if (varItem instanceof VariableStatement) {
+                    let structure = varItem.getStructure();
+                    if (structure?.declarationKind === "var") {
+                      span_and_lint(
+                        varItem.getStart(),
+                        varItem.getEnd(),
+                        item.initializer as string,
+                        "Consider using `let` for variable decleration in function scope rather than 'var'",
+                        file
+                      );
+                    }
+                  }
+                }
+              } else if (block instanceof LabeledStatement) {
+                let label_block = block.getDescendantStatements();
+                for (let label_item of label_block) {
+                  if (label_item instanceof VariableStatement) {
+                    let structure = label_item.getStructure();
+                    if (structure?.declarationKind === "var") {
+                      span_and_lint(
+                        label_item.getStart(),
+                        label_item.getEnd(),
+                        item.initializer as string,
+                        "Consider using `let` for variable decleration in function scope rather than 'var'",
+                        file
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
 export const useLetInAnonymousFunc = (
   sourceFile: Statement<ts.Statement>[],
   file: string,
