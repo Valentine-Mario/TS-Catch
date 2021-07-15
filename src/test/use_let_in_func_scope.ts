@@ -3,6 +3,13 @@ function stuff(params: number) {
   var a = params + 1;
   //should be ignored
   let b = 3 + 8;
+
+  let d = () => {
+    var boi = 12;
+    let kkk = () => {
+      var jio = 90;
+    };
+  };
   return a;
 }
 
@@ -22,6 +29,9 @@ class Test {
   test1(a: string) {
     //lint this
     var b = a + "hello";
+    let d = function () {
+      var dope = "lover";
+    };
   }
   test2(b: string) {
     //do  not lint
@@ -32,20 +42,24 @@ class Test {
 
 const hi = () => {
   //lint this
-  var a = 12;
+  var alpha = 12;
   //do not lint
   let b = 34;
-  return a + b;
+  return alpha + b;
 };
 
 const hey = function () {
   //lint this
-  var a = 12;
+  var beta = 12;
   //do not lint
   let b = 34;
-  return a + b;
+  var leg = (s: string) => {
+    var note = s;
+  };
+  return beta + b;
 };
-const a = 12;
+//don't lint
+var number = 12;
 
 (function () {
   123;
@@ -61,12 +75,19 @@ const Item = {
     //lint this
     var stuff = "a";
     //do not lint
+
     let bc = 2;
+    var kayy = () => {
+      var kay1 = 234;
+    };
     return stuff + bc;
   },
   a: () => {
     //lint this
     var a_b = "234";
+    var l = () => {
+      var lord = "hello";
+    };
     //do not lint
     let cv = "bol";
   },

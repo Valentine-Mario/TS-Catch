@@ -5,6 +5,27 @@ Consider using `let` for variable decleration in function scope rather than 'var
     ^^^^^^^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var boi = 12;
+
+    ^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var jio = 90;
+
+    ^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in block scope rather than 'var' :
+
+    var bobo = "bobo";
+
+    ^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
 Consider using `let` for variable decleration in method scope rather than 'var' in class Test :
 
     var b = a + "hello";
@@ -14,33 +35,42 @@ Consider using `let` for variable decleration in method scope rather than 'var' 
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
 
-    var a = 12;
+    var dope = "lover";
 
-    ^^^^^^^^^^^
+    ^^^^^^^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
 
-    var k = 45;
+    var alpha = 12;
 
-    ^^^^^^^^^^^
+    ^^^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
 
-    var a = 12;
+    var beta = 12;
 
-    ^^^^^^^^^^^
+    ^^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
 
-    var bobo = "bobo";
+    var note = s;
 
-    ^^^^^^^^^^^^^^^^^^
+    ^^^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var leg = (s: string) => {
+    var note = s;
+  };
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in block scope rather than 'var' :
 
     var stuff = "a";
 
@@ -49,8 +79,61 @@ Consider using `let` for variable decleration in function scope rather than 'var
 
 Consider using `let` for variable decleration in function scope rather than 'var' :
 
+    var kay1 = 234;
+
+    ^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in block scope rather than 'var' :
+
+    var kayy = () => {
+      var kay1 = 234;
+    };
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in block scope rather than 'var' :
+
+    var kay1 = 234;
+
+    ^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
     var a_b = "234";
 
     ^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var lord = "hello";
+
+    ^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var l = () => {
+      var lord = "hello";
+    };
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var lord = "hello";
+
+    ^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_let_in_func_scope.ts
+
+Consider using `let` for variable decleration in function scope rather than 'var' :
+
+    var k = 45;
+
+    ^^^^^^^^^^^
   File: src/test/use_let_in_func_scope.ts
 
