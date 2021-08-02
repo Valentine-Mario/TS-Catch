@@ -1,3 +1,17 @@
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+
+    c: Number
+
+    ^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+
+    a: Boolean
+
+    ^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
 Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate' parameter :
 
     params: Boolean
@@ -12,9 +26,44 @@ Consider using 'boolean', 'number', or 'string' primitive type rather than 'Bool
     ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '' parameter :
+
+    a: Number
+
+    ^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '' parameter :
+
+    boy: String
+
+    ^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
 Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate5' parameter :
 
     params: String
+
+    ^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+
+    stuff(item: Number, b: string)
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+
+    highs(c: Boolean)
+
+    ^^^^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+
+    mykeys: Number
 
     ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
