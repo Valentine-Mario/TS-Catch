@@ -2,10 +2,12 @@ import {
   ArrowFunction,
   BinaryExpression,
   Block,
+  ClassDeclaration,
   ExpressionStatement,
   FunctionDeclaration,
   Identifier,
   LabeledStatement,
+  MethodDeclaration,
   ParameterDeclaration,
   Project,
   Statement,
@@ -70,7 +72,11 @@ export const useBooleanInFuncType = (
               params.getStart(),
               params.getEnd(),
               content,
-              `Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '${functionItem.getName()}' parameter`,
+              `Consider using ${(
+                params.getStructure().type as string
+              ).toLowerCase()} primitive type rather than ${
+                params.getStructure().type
+              } in function '${functionItem.getName()}' parameter`,
               file
             );
           }
@@ -123,7 +129,11 @@ export const useBooleanInFuncType = (
                   params.getStart(),
                   params.getEnd(),
                   content,
-                  `Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function `,
+                  `Consider using ${(
+                    params.getStructure().type as string
+                  ).toLowerCase()} primitive type rather than ${
+                    params.getStructure().type
+                  }  in anonymous function `,
                   file
                 );
               }
@@ -160,13 +170,18 @@ export const useBooleanInFuncType = (
       let block_item = functionItem.getDescendantStatements();
       for (let block of block_item) {
         if (block instanceof ExpressionStatement) {
-          const re = new RegExp(".*:.*[Number|String|Boolean]");
+          const re = new RegExp(".*:.*(Number|String|Boolean)");
           if (re.test(block.getText())) {
             span_and_lint(
               block.getStart(),
               block.getEnd(),
               content,
-              `Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function `,
+              `Consider using ${block
+                .getText()
+                .match(re)[1]
+                .toLocaleLowerCase()} primitive type rather than ${
+                block.getText().match(re)[1]
+              } in function block`,
               file
             );
           }
@@ -223,6 +238,67 @@ export const useBooleanInFuncType = (
                   item.initializer as string
                 );
               }
+            }
+          }
+        }
+      }
+    } else if (functionItem instanceof ClassDeclaration) {
+      let method_list = functionItem.getMethods();
+      for (let method of method_list) {
+        const statement = method.getStatements();
+        for (let item of statement) {
+          if (item instanceof VariableStatement) {
+            let structure = item.getStructure();
+            for (let decl of structure.declarations) {
+              const newsourceFile = project
+                .createSourceFile(
+                  `${Math.random().toString(36).substring(10)}.ts`,
+                  decl.initializer
+                )
+                .getStatements();
+              for (let expr of newsourceFile) {
+                if (expr instanceof ExpressionStatement) {
+                  let children = expr.getChildren();
+                  for (let child of children) {
+                    if (child instanceof ArrowFunction) {
+                      useBooleanInFuncType(
+                        newsourceFile,
+                        file,
+                        decl.initializer as string
+                      );
+                    }
+                  }
+                }
+                if (expr instanceof FunctionDeclaration) {
+                  useBooleanInFuncType(
+                    [expr],
+                    file,
+                    decl.initializer as string
+                  );
+                }
+              }
+            }
+          }
+        }
+        if (method instanceof MethodDeclaration) {
+          let parameter = method.getParameters();
+          for (let params of parameter) {
+            if (
+              params.getStructure().type === "Boolean" ||
+              params.getStructure().type === "Number" ||
+              params.getStructure().type === "String"
+            ) {
+              span_and_lint(
+                params.getStart(),
+                params.getEnd(),
+                content,
+                `Consider using ${(
+                  params.getStructure().type as string
+                ).toLowerCase()} primitive type rather than ${
+                  params.getStructure().type
+                } in method '${functionItem.getName()}' parameter class ${functionItem.getName()}`,
+                file
+              );
             }
           }
         }

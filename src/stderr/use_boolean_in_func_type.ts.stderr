@@ -1,69 +1,90 @@
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+Consider using number primitive type rather than Number  in anonymous function  :
 
     c: Number
 
     ^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+Consider using boolean primitive type rather than Boolean  in anonymous function  :
 
     a: Boolean
 
     ^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate' parameter :
+Consider using boolean primitive type rather than Boolean in function 'evaluate' parameter :
 
     params: Boolean
 
     ^^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate3' parameter :
+Consider using number primitive type rather than Number in function 'evaluate3' parameter :
 
     params: Number
 
     ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '' parameter :
+Consider using number primitive type rather than Number in function '' parameter :
 
     a: Number
 
     ^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function '' parameter :
+Consider using string primitive type rather than String in function '' parameter :
 
     boy: String
 
     ^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in function 'evaluate5' parameter :
+Consider using string primitive type rather than String in function 'evaluate5' parameter :
 
     params: String
 
     ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+Consider using number primitive type rather than Number in method 'Test2' parameter class Test2 :
+
+    a: Number
+
+    ^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using boolean primitive type rather than Boolean  in anonymous function  :
+
+    k: Boolean
+
+    ^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using number primitive type rather than Number in function block :
 
     stuff(item: Number, b: string)
 
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+Consider using boolean primitive type rather than Boolean in function block :
 
     highs(c: Boolean)
 
     ^^^^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts
 
-Consider using 'boolean', 'number', or 'string' primitive type rather than 'Boolean', 'Number', 'String' in anonymous function  :
+Consider using number primitive type rather than Number  in anonymous function  :
 
     mykeys: Number
+
+    ^^^^^^^^^^^^^^
+  File: src/test/use_boolean_in_func_type.ts
+
+Consider using number primitive type rather than Number  in anonymous function  :
+
+    aqueos: Number
 
     ^^^^^^^^^^^^^^
   File: src/test/use_boolean_in_func_type.ts

@@ -48,6 +48,7 @@ class Test2 {
   }
 
   do_another_stuff(a: string) {
+    let higher = (k: Boolean) => {};
     return a;
   }
 }
@@ -62,3 +63,5 @@ const Item2 = {
     let b = 23;
   },
 };
+
+const babe = (aqueos: Number) => {};
