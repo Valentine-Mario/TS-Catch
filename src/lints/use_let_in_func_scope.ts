@@ -33,7 +33,7 @@ export const useLetInFuncScope = (
           for (let decl of structure.declarations) {
             const newsourceFile = project
               .createSourceFile(
-                `${Math.random().toString(36).substring(10)}.ts`,
+                `${Math.random().toString(36).substring(2)}.ts`,
                 decl.initializer
               )
               .getStatements();
@@ -80,7 +80,7 @@ export const useLetInFuncScope = (
                 //parse var again and retrieve exprersion
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     decl.initializer
                   )
                   .getStatements();
@@ -122,7 +122,7 @@ export const useLetInFuncScope = (
         //prase var stateents and transverse
         const newsourceFile = project
           .createSourceFile(
-            `${Math.random().toString(36).substring(10)}.ts`,
+            `${Math.random().toString(36).substring(2)}.ts`,
             item.initializer
           )
           .getStatements();
@@ -144,7 +144,7 @@ export const useLetInFuncScope = (
               for (let item of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     item.initializer
                   )
                   .getStatements();
@@ -178,7 +178,7 @@ export const useLetInFuncScope = (
               for (let item of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     item.initializer
                   )
                   .getStatements();
@@ -217,7 +217,7 @@ export const useLetInFuncScope = (
               for (let item of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     item.initializer
                   )
                   .getStatements();

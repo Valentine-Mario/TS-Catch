@@ -5,7 +5,6 @@ import {
   ClassDeclaration,
   ExpressionStatement,
   FunctionDeclaration,
-  Identifier,
   LabeledStatement,
   MethodDeclaration,
   ParameterDeclaration,
@@ -30,14 +29,16 @@ export const useBooleanInFuncType = (
       for (let item of statement) {
         //get instances of variable in function scope
         if (item instanceof VariableStatement) {
+          //get variable structure and parse the expr
           let structure = item.getStructure();
           for (let decl of structure.declarations) {
             const newsourceFile = project
               .createSourceFile(
-                `${Math.random().toString(36).substring(10)}.ts`,
+                `${Math.random().toString(36).substring(2)}.ts`,
                 decl.initializer
               )
               .getStatements();
+            //transverse the expr and recursively lint the expr
             for (let expr of newsourceFile) {
               if (expr instanceof ExpressionStatement) {
                 let children = expr.getChildren();
@@ -91,16 +92,18 @@ export const useBooleanInFuncType = (
           for (let arrow_child of arrow_children) {
             //get all instances of variable expression
             if (arrow_child instanceof VariableStatement) {
+              //parse var statement in expr
               let structure = arrow_child.getStructure();
               for (let decl of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     decl.initializer
                   )
                   .getStatements();
                 for (let expr of newsourceFile) {
                   if (expr instanceof ExpressionStatement) {
+                    //get expr child and recursively lint that
                     let children = expr.getChildren();
                     for (let child of children) {
                       if (child instanceof ArrowFunction) {
@@ -116,6 +119,7 @@ export const useBooleanInFuncType = (
               }
             }
           }
+          //get and lint parameters
           let parameters = child.getParameters();
           for (let params of parameters) {
             if (params instanceof ParameterDeclaration) {
@@ -139,12 +143,14 @@ export const useBooleanInFuncType = (
               }
             }
           }
-        } else if (child instanceof BinaryExpression) {
+        }
+        //get binary expr and parse the descendants
+        else if (child instanceof BinaryExpression) {
           const binary_desc = child.getDescendants();
           for (let item of binary_desc) {
             const newsourceFile = project
               .createSourceFile(
-                `${Math.random().toString(36).substring(10)}.ts`,
+                `${Math.random().toString(36).substring(2)}.ts`,
                 item.getText()
               )
               .getStatements();
@@ -156,10 +162,10 @@ export const useBooleanInFuncType = (
       let decleration = functionItem.getStructure().declarations;
       //get variable text and parse it
       for (let item of decleration) {
-        //prase var stateents and transverse
+        //prase var statement and transverse
         const newsourceFile = project
           .createSourceFile(
-            `${Math.random().toString(36).substring(10)}.ts`,
+            `${Math.random().toString(36).substring(2)}.ts`,
             item.initializer
           )
           .getStatements();
@@ -194,7 +200,7 @@ export const useBooleanInFuncType = (
               for (let item of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     item.initializer
                   )
                   .getStatements();
@@ -207,14 +213,16 @@ export const useBooleanInFuncType = (
               }
             }
           }
-        } else if (block instanceof LabeledStatement) {
+        }
+        //get label expr and parse children
+        else if (block instanceof LabeledStatement) {
           let label_block = block.getDescendantStatements();
           let label_children = block.getChildren();
           for (let label_child of label_children) {
             if (label_child instanceof ExpressionStatement) {
               const newsourceFile = project
                 .createSourceFile(
-                  `${Math.random().toString(36).substring(10)}.ts`,
+                  `${Math.random().toString(36).substring(2)}.ts`,
                   label_child.getText()
                 )
                 .getStatements();
@@ -228,7 +236,7 @@ export const useBooleanInFuncType = (
               for (let item of structure.declarations) {
                 const newsourceFile = project
                   .createSourceFile(
-                    `${Math.random().toString(36).substring(10)}.ts`,
+                    `${Math.random().toString(36).substring(2)}.ts`,
                     item.initializer
                   )
                   .getStatements();
@@ -242,17 +250,20 @@ export const useBooleanInFuncType = (
           }
         }
       }
-    } else if (functionItem instanceof ClassDeclaration) {
+    }
+    //get class instances and all methods in class
+    else if (functionItem instanceof ClassDeclaration) {
       let method_list = functionItem.getMethods();
       for (let method of method_list) {
         const statement = method.getStatements();
         for (let item of statement) {
+          //recursievly parse var expr
           if (item instanceof VariableStatement) {
             let structure = item.getStructure();
             for (let decl of structure.declarations) {
               const newsourceFile = project
                 .createSourceFile(
-                  `${Math.random().toString(36).substring(10)}.ts`,
+                  `${Math.random().toString(36).substring(2)}.ts`,
                   decl.initializer
                 )
                 .getStatements();
@@ -280,6 +291,7 @@ export const useBooleanInFuncType = (
             }
           }
         }
+        //lint methods parameters
         if (method instanceof MethodDeclaration) {
           let parameter = method.getParameters();
           for (let params of parameter) {
