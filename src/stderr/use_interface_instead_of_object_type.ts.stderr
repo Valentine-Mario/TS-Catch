@@ -1,0 +1,28 @@
+Consider defining an interface or type rather than object type in function 'hello_world' :
+
+    a: object
+
+    ^^^^^^^^^
+  File: src/test/use_interface_instead_of_object_type.ts
+
+Consider defining an interface or type rather than object type in function 'hello_world2' :
+
+    b: Object
+
+    ^^^^^^^^^
+  File: src/test/use_interface_instead_of_object_type.ts
+
+Consider defining an interface or type rather than object type in anonymous function :
+
+    b: Object
+
+    ^^^^^^^^^
+  File: src/test/use_interface_instead_of_object_type.ts
+
+Consider defining an interface or type rather than object type in function 'Test3' :
+
+    user: Object
+
+    ^^^^^^^^^^^^
+  File: src/test/use_interface_instead_of_object_type.ts
+

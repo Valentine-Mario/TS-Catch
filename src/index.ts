@@ -4,6 +4,7 @@ import {
   useLetInFuncScope,
   useBooleanInFuncType,
   useLetInIIFScope,
+  useInterfaceInFuncType,
 } from "./lints";
 const project = new Project({ useInMemoryFileSystem: true });
 
@@ -19,6 +20,7 @@ function lints(
   useLetInFuncScope(sourceFile, file, file_content);
   useBooleanInFuncType(sourceFile, file, file_content);
   useLetInIIFScope(sourceFile, file, file_content);
+  useInterfaceInFuncType(sourceFile, file, file_content);
 }
 
 async function run() {
