@@ -22,12 +22,11 @@ export const useMoreSucciniteArrayType = (
   file: string,
   content: string
 ) => {
-  for (let item of sourceFile) {
-    var global_variables: VariableStatementStructure[];
-
-    if (item instanceof VariableStatement) {
-      let var_structure = item.getStructure();
-      global_variables.push(var_structure);
-    }
-  }
+  // for (let item of sourceFile) {
+  //   var global_variables: VariableStatementStructure[];
+  //   if (item instanceof VariableStatement) {
+  //     let var_structure = item.getStructure();
+  //     global_variables.push(var_structure);
+  //   }
+  // }
 };
