@@ -4,9 +4,9 @@ function stuff(params: number) {
   //should be ignored
   let b = 3 + 8;
 
-  let d = () => {
+  let d = (kkl: string) => {
     var boi = 12;
-    let kkk = () => {
+    let kkk = (lmn: string) => {
       var jio = 90;
     };
   };

@@ -73,7 +73,7 @@ export const useLetInFuncScope = (
         if (child instanceof ArrowFunction) {
           let statements = child.getStatements();
           for (let child_statement of statements) {
-            //het all var statements in arrow function
+            //get all var statements in arrow function
             if (child_statement instanceof VariableStatement) {
               let structure = child_statement.getStructure();
               for (let decl of structure.declarations) {
