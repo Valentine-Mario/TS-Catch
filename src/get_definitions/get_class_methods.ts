@@ -1,15 +1,14 @@
-import { ClassDeclaration, Statement, ts } from "ts-morph";
-let all_classes: ClassDeclaration[] = [];
+import { ClassDeclaration, MethodDeclaration, Statement, ts } from "ts-morph";
 
 const get_class_methods = (
   input: Statement<ts.Statement>[]
-): ClassDeclaration[] => {
+): MethodDeclaration[] => {
   for (const classItem of input) {
     if (classItem instanceof ClassDeclaration) {
-      all_classes.push(classItem);
+      let method_list = classItem.getMethods();
+      return method_list;
     }
   }
-  return all_classes;
 };
 
 export default get_class_methods;
